@@ -1,5 +1,6 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/models/birdmodel.dart';
+import 'package:birderapp/services/birdservices.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +14,7 @@ class _AddNewBirdState extends State<AddNewBird> {
   String? _txtScientificName;
   String? _txtImageUrl;
   String? _txtId;
+  String? _info;
   BirdModel _newbird = BirdModel();
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -29,6 +31,22 @@ class _AddNewBirdState extends State<AddNewBird> {
       decoration: InputDecoration(labelText: 'Id:'),
       onSaved: (String? value) {
         _txtId = value;
+      },
+    );
+  }
+
+  Widget _buildBirdinfo() {
+    return TextFormField(
+      //keyboardType: TextInputType.number,
+      validator: (String? value) {
+        if (value?.isEmpty == true) {
+          return "Description Required !";
+        }
+        return null;
+      },
+      decoration: InputDecoration(labelText: 'Description:'),
+      onSaved: (String? value) {
+        _info = value;
       },
     );
   }
@@ -97,6 +115,10 @@ class _AddNewBirdState extends State<AddNewBird> {
                 _buildBirdName(),
                 _buildBirdScientificName(),
                 _buildBirdImageUrl(),
+                _buildBirdinfo(),
+                SizedBox(
+                  height: 50,
+                ),
                 ElevatedButton(
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
@@ -106,16 +128,20 @@ class _AddNewBirdState extends State<AddNewBird> {
                     // save the bird
 
                     _newbird = BirdModel(
-                        id: int.parse('${_txtId}'),
+                        id: int.parse('$_txtId'),
                         name: _txtName,
                         scientificName: _txtScientificName,
-                        imageUrl: _txtImageUrl);
+                        imageUrl: _txtImageUrl,
+                        info: _info,
+                        likes: 0,
+                        isFavrite: false);
                     // access listofbirds from ChangeNotifier
                     Provider.of<BirdListChangeNotifier>(
                       context,
                       listen: false,
                     ).addNewBirdToList(_newbird);
-                    Navigator.pop(context);
+
+                    Navigator.of(context).pop('success');
                   },
                   child: Text('Add new bird'),
                 )

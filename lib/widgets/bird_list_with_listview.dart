@@ -9,6 +9,11 @@ class BirdListWithListView extends StatefulWidget {
 }
 
 class _BirdListWithListViewState extends State<BirdListWithListView> {
+  void initState() {
+    super.initState();
+    Provider.of<BirdListChangeNotifier>(context, listen: false).getAllBirds();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<BirdListChangeNotifier>(

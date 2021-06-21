@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "84537296781",
+    "project_id": "sapientbirderapp",
+    "storage_bucket": "sapientbirderapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:84537296781:android:8ac2f99ebe8eaeb1015fc4",
+        "android_client_info": {
+          "package_name": "com.example.birderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "84537296781-7n55s326jprbnukli2t9dn99239qk1t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD94CJAm1WXoDWuN6syKx3B6asg4D61Ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "84537296781-7n55s326jprbnukli2t9dn99239qk1t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
