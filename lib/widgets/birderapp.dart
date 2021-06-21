@@ -26,7 +26,7 @@ class BirderApp extends StatelessWidget {
       appBar: AppBar(
         title: Text('Birder App'),
         centerTitle: true,
-        backgroundColor: Colors.teal[700],
+        backgroundColor: Colors.green,
       ),
       body: BirdListWithListView(),
       floatingActionButton: FloatingActionButton(

@@ -1,6 +1,5 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/models/birdmodel.dart';
-import 'package:birderapp/services/birdservices.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

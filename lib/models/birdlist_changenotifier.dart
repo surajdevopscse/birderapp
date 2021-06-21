@@ -54,6 +54,7 @@ class BirdListChangeNotifier extends ChangeNotifier {
   }
 
   void incrementLikes(BirdModel bird) {
+    bird.likes = bird.likes! + 1;
     notifyListeners();
   }
 }
