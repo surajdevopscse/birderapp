@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddNewBird extends StatefulWidget {
+  static final String routeName = '/addNew';
   @override
   _AddNewBirdState createState() => _AddNewBirdState();
 }
@@ -101,7 +102,7 @@ class _AddNewBirdState extends State<AddNewBird> {
       appBar: AppBar(
         title: Text('New Bird'), // a bad practise Text('$title')
         centerTitle: true,
-        backgroundColor: Colors.teal[700],
+        //backgroundColor: Colors.teal[700],
       ),
       body: SingleChildScrollView(
         child: Container(

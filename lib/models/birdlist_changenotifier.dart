@@ -1,6 +1,7 @@
 import 'package:birderapp/models/birdmodel.dart';
 import 'package:birderapp/services/birdservices.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BirdListChangeNotifier extends ChangeNotifier {
   final BirdsService _serviceObj = BirdsService();
@@ -33,7 +34,8 @@ class BirdListChangeNotifier extends ChangeNotifier {
   // ];
 
   void deleteABird(BirdModel bird) {
-    listofbirds.removeWhere((theBird) => bird.id == theBird.id);
+    FirebaseFirestore.instance.collection('birds').doc('${bird.id}').delete();
+    //listofbirds.removeWhere((theBird) => bird.id == theBird.id);
     // This call tells the widgets that are listening to this model to rebuild.
     notifyListeners();
   }

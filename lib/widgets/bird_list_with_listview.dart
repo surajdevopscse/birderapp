@@ -10,10 +10,7 @@ class BirdListWithListView extends StatefulWidget {
 }
 
 class _BirdListWithListViewState extends State<BirdListWithListView> {
-  void initState() {
-    super.initState();
-    Provider.of<BirdListChangeNotifier>(context, listen: false).getAllBirds();
-  }
+  
 
   void detailsShow(bird) {
     Navigator.push(
