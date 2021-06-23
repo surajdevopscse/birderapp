@@ -20,124 +20,70 @@ class BirderDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
-        color: Colors.deepPurple,
-        child: ListView(
-          children: [
-            DrawerHeader(
-              padding: EdgeInsets.zero,
-              child: UserAccountsDrawerHeader(
-                margin: EdgeInsets.zero,
-                accountEmail: Text('Information'),
-                accountName: Text('The Birder\'s App'),
-                currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://png.pngtree.com/png-clipart/20190721/ourmid/pngtree-cute-vivid-flying-bird-png-image_1564068.jpg'),
-                ),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 200.0,
+                decoration: BoxDecoration(color: Theme.of(context).accentColor),
               ),
-            ),
-            InkWell(
-              onTap: () => Navigator.pushNamed(context, BirderApp.routeName),
-              child: ListTile(
-                leading: Icon(
-                  CupertinoIcons.home,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Home',
-                  textScaleFactor: 1.2,
-                  style: TextStyle(
-                    color: Colors.white,
+              Container(
+                margin: EdgeInsets.all(10.0),
+                child: Center(
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 50.0,
+                        backgroundImage: NetworkImage(
+                            'https://png.pngtree.com/png-clipart/20190721/ourmid/pngtree-cute-vivid-flying-bird-png-image_1564068.jpg'),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        'Birder\'s App',
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () => Navigator.pushNamed(context, AddNewBird.routeName),
-              child: ListTile(
-                leading: Icon(
-                  CupertinoIcons.add,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Add New Bird',
-                  textScaleFactor: 1.2,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
+            ],
+          ),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: menuItems.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, menuItems[index].route.toString());
+                      },
+                      child: ListTile(
+                        leading: Icon(menuItems[index].icon,
+                            color: Theme.of(context).primaryColorDark),
+                        title: Text(
+                          '${menuItems[index].title}',
+                          style: Theme.of(context).textTheme.headline2,
+                        ),
+                      ),
+                    ),
+                    const Divider(
+                      height: 6,
+                      thickness: 2,
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                  ],
+                );
+              })
+        ],
       ),
     );
-    // return Drawer(
-    //   child: Column(
-    //     children: [
-    //       Stack(
-    //         children: [
-    //           Container(
-    //             height: 200.0,
-    //             decoration: BoxDecoration(color: Theme.of(context).accentColor),
-    //           ),
-    //           Container(
-    //             margin: EdgeInsets.all(50.0),
-    //             child: Center(
-    //               child: Column(
-    //                 children: [
-    //                   CircleAvatar(
-    //                     radius: 50.0,
-    //                     backgroundImage: NetworkImage(
-    //                         'https://png.pngtree.com/png-clipart/20190721/ourmid/pngtree-cute-vivid-flying-bird-png-image_1564068.jpg'),
-    //                   ),
-    //                   SizedBox(
-    //                     height: 20,
-    //                   ),
-    //                   Text(
-    //                     'Birder\'s App',
-    //                     style: TextStyle(color: Colors.white, fontSize: 25),
-    //                   ),
-    //                 ],
-    //               ),
-    //             ),
-    //           ),
-    //           Container(
-    //             child: Column(
-    //               children: [
-    //                 ListTile(
-    //                   leading: Icon(
-    //                     CupertinoIcons.home,
-    //                     color: Colors.white,
-    //                   ),
-    //                   title: Text(
-    //                     'Home',
-    //                     textScaleFactor: 1.2,
-    //                     style: TextStyle(
-    //                       color: Colors.white,
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 ListTile(
-    //                   leading: Icon(
-    //                     CupertinoIcons.profile_circled,
-    //                     color: Colors.white,
-    //                   ),
-    //                   title: Text(
-    //                     'Profile',
-    //                     textScaleFactor: 1.2,
-    //                     style: TextStyle(
-    //                       color: Colors.white,
-    //                     ),
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           )
-    //         ],
-    //       )
-    //     ],
-    //   ),
-    // );
   }
 }

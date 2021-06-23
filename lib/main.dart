@@ -17,11 +17,14 @@ void main() {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.red,
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline1: TextStyle(
-                  color: Colors.white, fontFamily: 'Pacifico', fontSize: 60.0),
-            ),
+            headline1: TextStyle(
+                color: Colors.white, fontFamily: 'Pacifico', fontSize: 60.0),
+            headline2: TextStyle(
+              color: Colors.grey[500],
+              fontSize: 20.0,
+            )),
       ),
       //initialRoute: '/',
       home: BirdSplashScreen(),
